@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun Spesial!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ffcce6 0%, #ff99cc 50%, #ff66b3 100%);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #d23369;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(210, 51, 105, 0.3);
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+            border: 5px dashed #ff66b3;
+        }
+
+        h1 {
+            color: #ff3399;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff66b3, #ff99cc);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 102, 179, 0.4);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 102, 179, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #ff66b3;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #ffe6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff66b3;
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+                left: 10%;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+                left: 90%;
+            }
+        }
+
+        .cake {
+            font-size: 3rem;
+            animation: wiggle 0.5s infinite alternate;
+        }
+
+        @keyframes wiggle {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            background-color: #ff66b3;
+            border-radius: 50%;
+            animation: balloon-float 10s linear infinite;
+            opacity: 0.7;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25px;
+            width: 2px;
+            height: 50px;
+            background-color: #ccc;
+        }
+
+        @keyframes balloon-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
+
+        .gift-box {
+            font-size: 3rem;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="photo-frame">
+            🎀
+        </div>
+        
+        <h1>HAPPY BIRTHDAY! <span class="emoji">🎉</span></h1>
+        
+        <div id="message1">
+            <p>Hai cantik! Hari spesialmu udah tiba nih! <span class="emoji">💖</span></p>
+            <button class="btn" onclick="showNextMessage()">Klik aku dong! <span class="emoji">👉👈</span></button>
+        </div>
+        
+        <div id="message2" class="hidden">
+            <p>Kamu tau gak? Hari ini adalah hari dimana bidadari tercantik lahir! <span class="cake">🎂</span></p>
+            <button class="btn" onclick="showNextMessage()">Beneran nih? <span class="emoji">😳</span></button>
+        </div>
+        
+        <div id="message3" class="hidden">
+            <p>Beneran dong! Kamu itu spesial banget tau! <span class="gift-box">🎁</span></p>
+            <button class="btn" onclick="showNextMessage()">Terus gimana? <span class="emoji">🤔</span></button>
+        </div>
+        
+        <div id="message4" class="hidden">
+            <p>Ya... aku cuma mau bilang...</p>
+            <p>Semoga panjang umur, sehat selalu, dan makin cantik ya! <span class="emoji">✨</span></p>
+            <button class="btn" onclick="showNextMessage()">Awww <span class="emoji">🥹</span></button>
+        </div>
+        
+        <div id="message5" class="hidden">
+            <p>Jangan lupa bahagia terus ya!</p>
+            <p>Kamu deserve yang terbaik! <span class="emoji">🌟</span></p>
+            <button class="btn" onclick="showNextMessage()">Terima kasih! <span class="emoji">💝</span></button>
+        </div>
+        
+        <div id="final-message" class="hidden">
+            <p>Ini khusus buat kamu! <span class="emoji">💌</span></p>
+            <button class="btn" onclick="createHearts()">Klik untuk hati! <span class="emoji">💘</span></button>
+            <button class="btn" onclick="resetMessages()">Baca lagi <span class="emoji">🔄</span></button>
+        </div>
+    </div>
+
+    <script>
+        let currentMessage = 1;
+        const totalMessages = 5;
+
+        function showNextMessage() {
+            document.getElementById('message' + currentMessage).classList.add('hidden');
+            currentMessage++;
+            
+            if (currentMessage > totalMessages) {
+                document.getElementById('final-message').classList.remove('hidden');
+            } else {
+                document.getElementById('message' + currentMessage).classList.remove('hidden');
+            }
+        }
+
+        function resetMessages() {
+            document.getElementById('final-message').classList.add('hidden');
+            for (let i = 1; i <= totalMessages; i++) {
+                document.getElementById('message' + i).classList.add('hidden');
+            }
+            currentMessage = 1;
+            document.getElementById('message1').classList.remove('hidden');
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+
+        // Create some balloons
+        function createBalloons() {
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 5; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 80 + 10 + '%';
+                balloon.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                balloon.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(balloon);
+            }
+        }
+
+        // Initial setup
+        window.onload = function() {
+            createBalloons();
+            createHearts();
+            setInterval(createHearts, 2000);
+        };
+    </script>
+</body>
+</html>
